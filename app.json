@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "Javascript-app",
-    "slug": "Javascript-app",
+    "name": "تطبيق الصلاة",
+    "slug": "prayer-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#00ccbb"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -28,6 +28,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#00ccbb"
+    },
+    "androidNavigationBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#00ccbb"
     }
   }
 }
