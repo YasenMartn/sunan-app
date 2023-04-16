@@ -12,9 +12,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CustomDrawer = (props) => {
 
-  const color = "#525252"
-
   const { colorScheme, setColorScheme } = useColorScheme();
+  const color = colorScheme === "light" ? "#525252" : "#fff"
+
 
   const toggleDarkMode = async () => {
     if (colorScheme === 'dark') {

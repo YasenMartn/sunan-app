@@ -25,11 +25,11 @@ const Home = ({navigation}) => {
 
       <View className="p-2 flex-wrap flex-row-reverse items-start justify-center">
         {filteredData.map((item, index) => (
-          <View key={index} className="bg-white dark:bg-slate-500 w-40 shadow-lg shadow-black dark:shadow-white flex-grow m-2">
+          <View key={index} className="bg-white dark:bg-slate-800 w-40 shadow-lg shadow-black dark:shadow-white flex-grow m-2 rounded-lg overflow-hidden">
             <Pressable android_ripple={{color:"gray", foreground: true}} className="overflow-hidden items-center justify-center" 
               onPress={() => navigation.navigate("Details", {id: item.id, title: item.title})}
             >
-              <Image source={require("../assets/green.png")} className="h-40 w-full bg-emerald-200 dark:bg-blue-400" resizeMode='cover'/>
+              <Image source={require("../assets/blue.png")} className="h-40 w-full bg-[#fff]" resizeMode='cover'/>
               <View className="p-2 px-1">
                 <Text className="font-[CairoB] text-lg dark:text-white">{item.title}</Text>
               </View>

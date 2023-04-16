@@ -3,6 +3,9 @@ import React, { useEffect } from 'react'
 import Swiper from 'react-native-swiper';
 import { data } from '../data';
 
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.selectable = true;
+
 const Details = ({ route, navigation }) => {
 
   const { id } = route.params;
@@ -18,9 +21,9 @@ const Details = ({ route, navigation }) => {
     <Swiper showsButtons={false} showsPagination={false} index={itemId} loop={false}>
       {data.map(({id, title, number, mandatory, type, info, virtue, naming, before, after, time, way}) => (
         
-      <View className="p-5 py-0 bg-white dark:bg-slate-800 flex-1" key={id}>
+      <View className="p-3 py-0 bg-white dark:bg-slate-800 flex-1" key={id}>
         <ScrollView showsVerticalScrollIndicator={false} >
-          <View className="space-y-5 py-5">
+          <View className="space-y-5 py-3">
 
             <Text className="font-[CairoB] text-lg text-center dark:text-white">{title}</Text>
 
@@ -28,30 +31,30 @@ const Details = ({ route, navigation }) => {
             <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400">{info}</Text>}
             
             <View className="flex-row space-x-2 justify-end">
-              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400">{mandatory}</Text>
-              <Text className="font-[CairoB] text-lg text-blue-500">حكمها:</Text>
+              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400 flex-shrink" >{number}</Text>
+              <Text className="font-[CairoB] text-lg text-blue-500" >ركعاتها:</Text>
             </View>
 
             <View className="flex-row space-x-2 justify-end">
-              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400 flex-shrink">{type}</Text>
+              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400 flex-shrink" >{type}</Text>
               <Text className="font-[CairoB] text-lg text-[#00ccbb]">نوعها:</Text>
             </View>
 
             <View className="flex-row space-x-2 justify-end">
-              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400 flex-shrink">{number}</Text>
-              <Text className="font-[CairoB] text-lg text-blue-500">ركعاتها:</Text>
+              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400">{mandatory}</Text>
+              <Text className="font-[CairoB] text-lg text-blue-500">حكمها:</Text>
             </View>
 
             {time &&
             <View className="justify-end">
               <Text className="font-[CairoB] text-lg text-[#00ccbb]">وقتها:</Text>
-              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400">{time}</Text>
+              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400" >{time}</Text>
             </View>}
 
             {way &&
             <View className="justify-end">
               <Text className="font-[CairoB] text-lg text-[#00ccbb]">طريقتها:</Text>
-              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400">{way}</Text>
+              <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400" >{way}</Text>
             </View>}
 
             {before && 
@@ -69,25 +72,27 @@ const Details = ({ route, navigation }) => {
                 <Text className="font-[CairoB] text-lg text-right text-slate-500 dark:text-slate-400">{after}</Text>
                 <Text className="font-[CairoB] text-lg text-red-500">سُنَّة بَعْدِيَّة:</Text>
               </View>
-              <Text className="font-[CairoB] dark:text-slate-400">سنن الصلاة البعدية هي التي تصلى بعد صلاة الفريضة تقربا إلى الله</Text>
+              <Text className="font-[CairoB] dark:text-slate-400" >
+                سنن الصلاة البعدية هي التي تصلى بعد صلاة الفريضة تقربا إلى الله
+              </Text>
             </View>}
 
             {naming && 
             <View className="">
-              <Text className="font-[CairoB] text-lg text-red-500">سبب التسمية:</Text>
-              <Text className="font-[CairoB] text-lg text-slate-500 dark:text-slate-400 text-right">{naming}</Text>
+              <Text className="font-[CairoB] text-lg text-blue-500">سبب التسمية:</Text>
+              <Text className="font-[CairoB] text-lg text-slate-500 dark:text-slate-400 text-right" >{naming}</Text>
             </View>}
 
             {virtue && 
               <View className="">
-                <Text className="font-[CairoB] text-lg text-amber-500">فضلها:</Text>
+                <Text className="font-[CairoB] text-lg text-[#00ccbb]" >فضلها:</Text>
                 <View className="space-y-3">
                   {virtue.map((i, index) => (
                     <View key={index} className="space-y-2">
-                      {i.title && <Text className="font-[CairoB] text-right dark:text-white">{i.title}</Text>}
+                      {i.title && <Text className="font-[CairoB] text-right dark:text-white" >{i.title}</Text>}
                       <View className="space-y-2">
                         {i.sayings?.map((i, index) => (
-                          <Text key={index} className="font-[CairoB] text-right text-slate-500 dark:text-slate-400">{i}</Text>
+                          <Text key={index} className="font-[CairoB] text-right text-slate-500 dark:text-slate-400" >{i}</Text>
                         ))}
                       </View>
                     </View>

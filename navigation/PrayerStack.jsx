@@ -7,9 +7,9 @@ import { DrawerActions } from '@react-navigation/native';
 const Stack = createStackNavigator();
 
 const screenOptions = ({navigation}) => ({
-  headerStyle: {
-    backgroundColor: '#00ccbb',
-  },
+  // headerStyle: {
+  //   backgroundColor: '#4B0082',
+  // },
   headerTintColor: '#fff',
   headerTitleAlign: 'center',
   headerTitleStyle: {

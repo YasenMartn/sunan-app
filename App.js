@@ -50,26 +50,38 @@ export default function App() {
     return null;
   }
 
+  const lightTheme = {
+    dark: false,
+    colors: {
+      primary: '#4B0082',
+      background: '#4B0082',
+      card: '#005F5E', //header color
+      text: '#fff',
+      border: '#4B0082',
+      notification: '#00ccbb',
+    },
+  };
+
   const darkTheme = {
     dark: false,
     colors: {
-      primary: '#00ccbb',
-      background: '#00ccbb',
-      card: '#00ccbb',
+      primary: '#4B0082',
+      background: '#4B0082',
+      card: '#ac7ef8', //header color
       text: '#fff',
-      border: '#00ccbb',
-      notification: '#00ccbb',
+      border: '#4B0082',
+      notification: '#4B0082',
     },
   };
 
   return (
     <>
       <PaperProvider>
-        <NavigationContainer theme={colorScheme === "dark" ? darkTheme : DefaultTheme}>
+        <NavigationContainer theme={colorScheme === "dark" ? darkTheme : lightTheme}>
           <DrawerNav/>
         </NavigationContainer>
       </PaperProvider>
-      <StatusBar style="light" backgroundColor="#00ccbb" />
+      <StatusBar style="light" backgroundColor={colorScheme === "dark" ? "#005F5E" : "#005F5E"} />
     </>
   );
 }
