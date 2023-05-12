@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "تطبيق الصلاة",
-    "slug": "prayer-app",
+    "name": "Islam Quiz",
+    "slug": "islam-quiz-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#00ccbb"
+      "backgroundColor": "#3e8c84"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -31,11 +31,11 @@
     },
     "androidStatusBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#00ccbb"
+      "backgroundColor": "#3e8c84"
     },
     "androidNavigationBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#00ccbb"
+      "backgroundColor": "#3e8c84"
     }
   }
 }

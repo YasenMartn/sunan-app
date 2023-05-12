@@ -1,20 +1,14 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from '../screens/Home';
 import { FontAwesome } from '@expo/vector-icons';
-import MTopTabsNav from './MTopTabsNav';
-import MaterialBotTabs from './MaterialBotTabs';
-import BottomTabs from './BottomTabs';
 import CustomDrawer from '../components/CustomDrawer';
-import { MaterialIcons } from '@expo/vector-icons';
-import { DrawerActions } from '@react-navigation/native';
-import PrayerStack from './PrayerStack';
+import QuizStack from './QuizStack';
 import { useColorScheme } from 'nativewind';
 
 
 const Drawer = createDrawerNavigator();
 
-const screenOptions = ({navigation}) => {
-  const { colorScheme, setColorScheme } = useColorScheme();
+const screenOptions = () => {
   return {
     headerStyle: {
       backgroundColor: "#00ccbb",
@@ -26,7 +20,7 @@ const screenOptions = ({navigation}) => {
     headerTitleStyle: {
       fontFamily: "CairoB",
     },
-    drawerActiveBackgroundColor: colorScheme === "dark" ? "#A68DF6" : "#ac7ef8",
+    drawerActiveBackgroundColor: "#3e8c84",
     drawerActiveTintColor: "white", 
     // drawerInactiveTintColor: "black", 
     drawerPosition: "right",
@@ -54,10 +48,7 @@ const homeOptions = {
 const DrawerNav = () => {
   return (
     <Drawer.Navigator screenOptions={screenOptions} drawerContent={(props) => <CustomDrawer {...props} />}>
-      <Drawer.Screen name="الصفحة الرئيسية" component={PrayerStack} options={homeOptions}/>
-      {/* <Drawer.Screen name="Material Top" component={MTopTabsNav} options={homeOptions}/>
-      <Drawer.Screen name="Material Bot" component={MaterialBotTabs} options={homeOptions}/>
-      <Drawer.Screen name="BottomTabs" component={BottomTabs} options={homeOptions}/> */}
+      <Drawer.Screen name="الصفحة الرئيسية" component={QuizStack} options={homeOptions}/>
     </Drawer.Navigator>
   )
 }
