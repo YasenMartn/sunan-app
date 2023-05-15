@@ -40,8 +40,8 @@ const CustomDrawer = (props) => {
   const handleShareLink = async () => {
     try {
       const result = await Share.share({
-        message: `أنصحك بتحميل تطبيق الصلاة عبر هذا الرابط: ${"https://docs.expo.dev/versions/latest/sdk/linking/"}`,
-        url: "https://docs.expo.dev/versions/latest/sdk/linking/",
+        message: `أنصحك بتحميل تطبيق الصلاة عبر هذا الرابط: ${"https://play.google.com/store/apps/details?id=com.kastan.islamquiz"}`,
+        url: "https://play.google.com/store/apps/details?id=com.kastan.islamquiz",
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -78,7 +78,7 @@ const CustomDrawer = (props) => {
 
         {/* rate app */}
         <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-5 py-4" 
-          onPress={() => Linking.openURL("https://docs.expo.dev/versions/latest/sdk/linking/")}        
+          onPress={() => Linking.openURL("https://play.google.com/store/apps/details?id=com.kastan.islamquiz")}        
         >
           <MaterialIcons name="star" size={24} color={color} />
           <Text className="mr-5 text-black font-[CairoB] dark:text-white">تقييم التطبيق</Text>
@@ -86,7 +86,7 @@ const CustomDrawer = (props) => {
 
         {/* our other apps  */}
         <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-5 py-4"
-          onPress={() => Linking.openURL("https://docs.expo.dev/versions/latest/sdk/linking/")}        
+          onPress={() => Linking.openURL("https://play.google.com/store/apps/dev?id=5331139693103010529")}        
         >
           <AntDesign name="appstore1" size={24} color={color} />
           <Text className="mr-5 text-black font-[CairoB] dark:text-white">تطبيقاتنا الأخرى</Text>

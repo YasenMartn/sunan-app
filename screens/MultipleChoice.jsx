@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 // import { data } from '../data'
 import { Button, IconButton, RadioButton } from 'react-native-paper';
 import Animated, {ZoomIn, FadeOutDown, FadeIn, FadeInUp, Layout, Easing, FadeInDown, FadeOut, FadeOutRight, ZoomOut } from 'react-native-reanimated'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import * as Clipboard from 'expo-clipboard';
+import { updateScore } from '../redux/Slice';
 
 const MultipleChoice = ({route, navigation}) => {
 
@@ -26,14 +27,15 @@ const MultipleChoice = ({route, navigation}) => {
 
   const questionsArr = questions[currentQues];
 
-  const {just} = questionsArr;
+  const {just, justVerse} = questionsArr;
 
   const dataLength = questions.length
 
   // const score = (Math.floor((correctCount / dataLength) * 100))
 
-
-
+  const dispatch = useDispatch();
+  const score = (Math.floor((correctCount / dataLength) * 100))
+  
   const correctAnswer = questions[currentQues].answer;
 
   const handleOptionClick = (item) => {
@@ -59,6 +61,7 @@ const MultipleChoice = ({route, navigation}) => {
     } else {
       setcurrentQues(0);
       setSelectedOption(null);
+      dispatch(updateScore({score, id: levelId, testId: id,}))
       navigation.navigate("النتيجة", {dataLength, correctCount, mistakeCount, id, levelId})
     }
   };
@@ -80,17 +83,16 @@ const MultipleChoice = ({route, navigation}) => {
     <View className="flex-1">
       <ScrollView showsVerticalScrollIndicator={false}>
 
-      <View className="flex-1 p-3 justify-between bg-white dark:bg-slate-800 pb-20">
+      <View className="flex-1 p-3 justify-between  pb-20">
 
       {/* <Text>correct: {correctCount} wrong: {mistakeCount} score: {score}</Text> */}
     
       <View className="shadow-md shadow-black bg-white dark:bg-slate-700 rounded-md overflow-hidden">
 
-       
         <IconButton
           icon="content-copy"
           size={20}
-          onPress={() => copyQ(questionsArr.ques)}
+          onPress={() => copyQ(currentQues + 1 + ". " + questionsArr.ques)}
         />
 
         <View className="p-3">
@@ -104,8 +106,9 @@ const MultipleChoice = ({route, navigation}) => {
             {index === 0 && <View className="bg-gray-500 dark:bg-[#c9d2d9] h-[1px]"></View>}
             <Pressable android_ripple={{color: "gray"}} 
               disabled={clicked == true && true}
-              className={`p-3 flex-row-reverse items-center justify-between
-                ${clicked == true && item == correctAnswer ? "bg-emerald-100" : clicked == true && "bg-rose-100"}
+              className={`p-3 flex-row-reverse items-center justify-between 
+                ${clicked == true && item == correctAnswer ? "bg-emerald-100 dark:bg-emerald-200" 
+                : clicked == true && "bg-rose-100 dark:bg-rose-200"}
               `}
               onPress={() => handleOptionClick(item) }
             >
@@ -129,14 +132,15 @@ const MultipleChoice = ({route, navigation}) => {
            {/* {index !== questionsArr.options.length - 1 && 
             <View className="bg-gray-500 dark:bg-[#c9d2d9] h-[1px]"></View>
            } */}
-            <View className="bg-gray-500 dark:bg-[#c9d2d9] h-[1px]"></View>
+            <View className="bg-gray-500 dark:bg-[#c9d2d9] h-[1px] "></View>
           </View>
         ))}
 
         {clicked && just &&
-          <Animated.View className="p-3 space-y-2 items-end bg-emerald-100" layout={Layout.duration(200).delay(200)} entering={FadeIn} exiting={FadeOut}>
+          <Animated.View className="p-3 space-y-2 items-end bg-emerald-100 dark:bg-emerald-200" layout={Layout.duration(200).delay(200)} entering={FadeIn} exiting={FadeOut}>
             <MaterialCommunityIcons name="lightbulb-on" size={24} color="#059669" />
-            <Text className="text-xl text-emerald-600 ">{just}</Text>
+            {just && <Text className="text-xl text-emerald-600 font-[CairoR] pt-2 leading-8">{just}</Text>}
+            {justVerse && <Text className="text-xl text-emerald-600 leading-8">{justVerse}</Text>}
           </Animated.View>
         }
 
@@ -146,7 +150,7 @@ const MultipleChoice = ({route, navigation}) => {
 
      
 
-        <View className="p-3">
+      <View className="p-3">
         {clicked && 
         <Animated.View layout={Layout.duration(200).delay(200)} entering={ZoomIn} exiting={ZoomOut} className="">
           <Pressable onPress={handleAnswerSubmit} android_ripple={{color: "gray"}} className="w-full bg-blue-500 pt-1 rounded-md p-3 absolute bottom-0">
