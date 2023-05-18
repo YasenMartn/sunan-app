@@ -59,10 +59,10 @@ const MultipleChoice = ({route, navigation}) => {
       setSelectedOption(null);
       setclicked(false)
     } else {
+      navigation.navigate("النتيجة", {dataLength, correctCount, mistakeCount, id, levelId})
       setcurrentQues(0);
       setSelectedOption(null);
       dispatch(updateScore({score, id: levelId, testId: id,}))
-      navigation.navigate("النتيجة", {dataLength, correctCount, mistakeCount, id, levelId})
     }
   };
 
@@ -89,11 +89,11 @@ const MultipleChoice = ({route, navigation}) => {
     
       <View className="shadow-md shadow-black bg-white dark:bg-slate-700 rounded-md overflow-hidden">
 
-        <IconButton
+        {/* <IconButton
           icon="content-copy"
           size={20}
           onPress={() => copyQ(currentQues + 1 + ". " + questionsArr.ques)}
-        />
+        /> */}
 
         <View className="p-3">
           <Text className="text-black dark:text-white text-lg font-[CairoB]" selectable={true}>

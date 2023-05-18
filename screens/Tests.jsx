@@ -1,9 +1,11 @@
 import { View, Text, Pressable, ScrollView, Alert, } from 'react-native'
 import React, { useEffect, useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { IconButton } from 'react-native-paper';
+import { Button, IconButton } from 'react-native-paper';
 import { MaterialIcons } from '@expo/vector-icons';
 import { resetSingleTest } from '../redux/Slice';
+import { Ionicons } from '@expo/vector-icons';
+import LottieView from 'lottie-react-native';
 
 const Tests = ({ navigation, route }) => {
 
@@ -41,30 +43,33 @@ const Tests = ({ navigation, route }) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className="flex-1 items-center justify-center flex-wrap flex-row gap-3 p-3 py-5">
           {tests?.map((item, index) => (
-            <View key={index} className={`w-44 shadow-lg items-end shadow-black h-40
+            <View key={index} className={`w-44 shadow-lg items-end shadow-black
               ${item.score >= 50 && item.taken == true ? "bg-emerald-200" 
               : item.taken == false ? "bg-white dark:bg-slate-700" : "bg-rose-200"}`}
             >
                 
-              <Pressable className="p-3 w-full h-full justify-between" android_ripple={{color: "#3e8c84"}} 
+              <Pressable className="w-full p-3 justify-between h-44" android_ripple={{color: "#3e8c84"}} 
                 onPress={() => navigation.navigate("Exercise", {levelId: id, item: item, title: item.title})}
                 onLongPress={() => createAlert(item.id)}
               >
 
-                <Text className={`font-[CairoB] text-xl 
-                  ${item.score >= 50 && item.taken == true ? "text-emerald-600" : item.taken == false ? 
-                  "text-slate-900 dark:text-white" : "text-rose-600"}`}
-                >
-                  {item.title} 
-                </Text>
+                <View className="flex-row-reverse justify-between">
+                  <Text className={`font-[CairoB] text-xl 
+                    ${item.score >= 50 && item.taken == true ? "text-emerald-600" : item.taken == false ? 
+                    "text-slate-900 dark:text-white" : "text-rose-600"}`}
+                  >
+                    {item.title} 
+                  </Text>
+                  {item.score === 100 && <Ionicons name="md-trophy-sharp" size={24} color="#10b981" />}
+                </View>
 
-                <Text className={`font-[CairoB] text-xl 
+                {/* <Text className={`font-[CairoB] text-xl 
                   ${item.score >= 50 && item.taken == true ? "text-emerald-600" : item.taken == false ? 
                   "text-slate-900 dark:text-white" : "text-rose-600"}`}
                 >
                   {item.questions.length} 
-                </Text>
-
+                </Text> */}
+             
                 <Text className={`font-[CairoB] text-lg
                   ${item.score >= 50 && item.taken == true ? "text-emerald-600" 
                   : item.taken == false ? "text-slate-500 dark:text-slate-400" 
@@ -72,6 +77,16 @@ const Tests = ({ navigation, route }) => {
                 >
                   النتيجة: %{item.score}
                 </Text>
+              
+                
+                
+                <Button textColor='white'  mode='elevated'
+                  className="bg-blue-500 rounded-sm pt-1" 
+                  labelStyle={{fontFamily: "CairoB", paddingTop: 1}} 
+                >
+                  البدأ
+                </Button>
+               
                 
               {/* 
                 <View className="bg-blue-500 rounded-md overflow-hidden self-end shadow-sm shadow-black">
@@ -88,6 +103,9 @@ const Tests = ({ navigation, route }) => {
             </View>
           ))} 
         </View>
+
+        
+       
       </ScrollView>
     </View>
     

@@ -57,6 +57,18 @@ const CustomDrawer = (props) => {
     }
   };
   
+  const openFacebookMessenger = async () => {
+    const facebookUrl = 'https://www.facebook.com/messages/t/YourPageUsername'; // Replace with your Facebook page username or ID
+  
+    // Check if the Facebook app is installed
+    const isFacebookAppInstalled = await Linking.canOpenURL('fb://');
+  
+    // Open the Facebook app if it's installed, otherwise open in browser
+    const urlToOpen = isFacebookAppInstalled ? 'fb://page/YourPageUsername' : facebookUrl;
+  
+    await Linking.openURL(urlToOpen);
+  };
+  
 
   return (
     <View className="flex-1 bg-white dark:bg-slate-800">
@@ -102,7 +114,7 @@ const CustomDrawer = (props) => {
 
         {/* contact me */}
         <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-5 py-4" 
-          onPress={() => Linking.openURL("https://www.facebook.com/yassin.laghzaouna.5?mibextid=ZbWKwL")}      
+          onPress={() => Linking.openURL("mailto:kastaninc@gmail.com")}      
         > 
           <MaterialCommunityIcons name="email" size={24} color={color} />
           <Text className="mr-5 text-black font-[CairoB] dark:text-white">تواصل معي</Text>

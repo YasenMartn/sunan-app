@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialIcons } from '@expo/vector-icons';
 import { DrawerActions } from '@react-navigation/native';
-import { Alert, useColorScheme } from 'react-native';
+import { Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 import Home from '../screens/Home';
 import MultipleChoice from '../screens/MultipleChoice';
@@ -14,6 +14,8 @@ import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useEffect } from 'react';
 import { Appbar } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useColorScheme } from 'nativewind';
 
 const Stack = createStackNavigator();
 
@@ -66,18 +68,18 @@ const QuizStack = () => {
         onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
       />
     ),
-    // headerMode: "float",
-    // headerLeft: () => (
-    //   <MaterialIcons
-    //     name="delete"
-    //     size={24}
-    //     color="white"
-    //     style={{ marginLeft: 15 }}
-    //     onPress={createAlert}
-    //   />
-    // ),
+    headerMode: "float",
+    headerLeft: () => (
+      <MaterialIcons
+        name="delete"
+        size={24}
+        color="white"
+        style={{ marginLeft: 15 }}
+        onPress={createAlert}
+      />
+    ),
     // headerTitle: 'أسئلة في الإسلام',
-    header: (props) => <CustomHeader {...props} />
+    // header: (props) => <CustomHeader {...props} />
   });
 
   const createAlert = () =>

@@ -3,6 +3,7 @@ import React from 'react'
 // import { data } from '../data'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetAllTests } from '../redux/Slice'
+import { Ionicons } from '@expo/vector-icons';
 
 const Home = ({navigation}) => {
 
@@ -31,7 +32,9 @@ const Home = ({navigation}) => {
               onLongPress={() => createAlert(item.id)}
             >
               <Image source={item.img} className="h-40 w-full bg-white dark:bg-slate-700" resizeMode='contain'/>
-              <View className="p-2">
+              <View className="p-2 flex-row justify-center space-x-3">
+                
+                {item.tests.every(test => test.score === 100) && <Ionicons name="md-trophy-sharp" size={24} color="#10b981" />}
                 <Text className="text-black dark:text-white text-center font-[CairoB] text-lg">{item.title}</Text>
               </View>
             </Pressable>

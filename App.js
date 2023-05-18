@@ -12,11 +12,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from "redux-persist";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-import Z from "./screens/Z";
 import QuizStack from "./navigation/QuizStack";
 
 SplashScreen.preventAutoHideAsync();
 let persistor = persistStore(store);
+
 
 export default function App() {
 
@@ -35,6 +35,7 @@ export default function App() {
         await Font.loadAsync({
           CairoB: require("./assets/fonts/Cairo-Bold-3.ttf"),
           CairoR: require("./assets/fonts/Cairo-Regular-1.ttf"),
+          T: require("./assets/fonts/T.ttf"),
         });
         await new Promise((resolve) => setTimeout(resolve, 0));
       } catch (e) {

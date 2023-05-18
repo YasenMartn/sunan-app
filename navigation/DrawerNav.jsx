@@ -3,8 +3,6 @@ import Home from '../screens/Home';
 import { FontAwesome } from '@expo/vector-icons';
 import CustomDrawer from '../components/CustomDrawer';
 import QuizStack from './QuizStack';
-import { useColorScheme } from 'nativewind';
-import Er from '../screens/Er';
 
 
 const Drawer = createDrawerNavigator();
@@ -50,7 +48,6 @@ const DrawerNav = () => {
   return (
     <Drawer.Navigator screenOptions={screenOptions} drawerContent={(props) => <CustomDrawer {...props} />}>
       <Drawer.Screen name="الصفحة الرئيسية" component={QuizStack} options={homeOptions}/>
-      <Drawer.Screen name="er" component={Er} options={homeOptions}/>
     </Drawer.Navigator>
   )
 }
