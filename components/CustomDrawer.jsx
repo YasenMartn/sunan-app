@@ -121,7 +121,7 @@ const CustomDrawer = (props) => {
         </Pressable>
 
         {/* dark mode */}
-        <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-4 py-2" 
+        <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-4" 
           onPress={() => toggleDarkMode()}      
         > 
           <Switch value={colorScheme === 'dark'} onValueChange={toggleDarkMode} color="#00ccbb" />

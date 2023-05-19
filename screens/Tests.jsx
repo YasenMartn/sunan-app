@@ -5,7 +5,6 @@ import { Button, IconButton } from 'react-native-paper';
 import { MaterialIcons } from '@expo/vector-icons';
 import { resetSingleTest } from '../redux/Slice';
 import { Ionicons } from '@expo/vector-icons';
-import LottieView from 'lottie-react-native';
 
 const Tests = ({ navigation, route }) => {
 

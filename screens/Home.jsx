@@ -11,8 +11,8 @@ const Home = ({navigation}) => {
 
   const dispatch = useDispatch();
 
-  const createAlert = (id) =>
-    Alert.alert('', 'إعادة تعيين النتيجة لجميع الإختبارات ؟', [
+  const createAlert = (id, title) =>
+    Alert.alert('', `إعادة تعيين النتيجة لجميع إختبارات ${title} ؟ `, [
       {
         text: 'لا',
         onPress: () => console.log('Cancel Pressed'),
@@ -29,7 +29,7 @@ const Home = ({navigation}) => {
           <View key={index} className="w-44 bg-white shadow-md shadow-black justify-between flex-grow dark:bg-slate-700">
             <Pressable android_ripple={{color: "gray", foreground: true}} 
               onPress={() => navigation.navigate("Tests", {id: item.id, title: item.title})}
-              onLongPress={() => createAlert(item.id)}
+              onLongPress={() => createAlert(item.id, item.title)}
             >
               <Image source={item.img} className="h-40 w-full bg-white dark:bg-slate-700" resizeMode='contain'/>
               <View className="p-2 flex-row justify-center space-x-3">

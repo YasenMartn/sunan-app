@@ -52,45 +52,73 @@ const QuizStack = () => {
     getTheme();
   }, []);
 
-  const screenOptions = ({ navigation, route }) => ({
-    
-    headerTintColor: '#fff',
-    headerTitleAlign: 'center',
-    headerTitleStyle: {
-      fontFamily: 'CairoB',
-    },
-    headerRight: () => (
-      <MaterialIcons
-        name="menu"
-        size={24}
-        color="white"
-        style={{ marginRight: 15 }}
-        onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-      />
-    ),
-    headerMode: "float",
-    headerLeft: () => (
-      <MaterialIcons
-        name="delete"
-        size={24}
-        color="white"
-        style={{ marginLeft: 15 }}
-        onPress={createAlert}
-      />
-    ),
+  const screenOptions = ({ navigation, route }) => {
+
+    const handleResetScore = () => {
+      Alert.alert('', 'إعادة تعيين النتيجة لجميع الإختبارات ؟', [
+        {
+          text: 'لا',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        { text: 'نعم', onPress: () => dispatch(resetScore()) },
+      ]);
+    };
+
+    let headerLeft = null;
+
+    if (route.name === 'أسئلة في الإسلام') {
+      headerLeft = () => (
+        <MaterialIcons
+          name="delete"
+          size={24}
+          color="white"
+          style={{ marginLeft: 15 }}
+          onPress={handleResetScore}
+        />
+      );
+    } else {
+      headerLeft = () => (
+        <Ionicons
+          name="arrow-back"
+          size={24}
+          color="white"
+          style={{ marginLeft: 15 }}
+          onPress={() => navigation.goBack()}
+        />
+      );
+    }
+
+    return{
+      headerTintColor: '#fff',
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontFamily: 'CairoB',
+      },
+      headerRight: () => (
+        <MaterialIcons
+          name="menu"
+          size={24}
+          color="white"
+          style={{ marginRight: 15 }}
+          onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+        />
+      ),
+      headerMode: "float",
+      headerLeft,
+    // headerLeft: () => (
+    //   <MaterialIcons
+    //     name="delete"
+    //     size={24}
+    //     color="white"
+    //     style={{ marginLeft: 15 }}
+    //     onPress={createAlert}
+    //   />
+    // ),
     // headerTitle: 'أسئلة في الإسلام',
     // header: (props) => <CustomHeader {...props} />
-  });
-
-  const createAlert = () =>
-    Alert.alert('', 'إعادة تعيين النتيجة لجميع الإختبارات ؟', [
-      {
-        text: 'لا',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
-      { text: 'نعم', onPress: () => dispatch(resetScore()) },
-    ]);
+    }
+  };
 
   return (
     <Stack.Navigator screenOptions={screenOptions}>
