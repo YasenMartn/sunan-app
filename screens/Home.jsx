@@ -1,48 +1,35 @@
-import { View, Text, Pressable, Image, ScrollView, Alert } from 'react-native'
+import { View, Text, Pressable, ScrollView } from 'react-native'
 import React from 'react'
-// import { data } from '../data'
-import { useDispatch, useSelector } from 'react-redux'
-import { resetAllTests } from '../redux/Slice'
-import { Ionicons } from '@expo/vector-icons';
+import { data } from '../data'
+import { useSelector } from 'react-redux'
 
 const Home = ({navigation}) => {
 
-  const data = useSelector(state => state.app.data)
-
-  const dispatch = useDispatch();
-
-  const createAlert = (id, title) =>
-    Alert.alert('', `إعادة تعيين النتيجة لجميع إختبارات ${title} ؟ `, [
-      {
-        text: 'لا',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
-      { text: 'نعم', onPress: () => dispatch(resetAllTests({id})) },
-  ]);
-
+  const color = useSelector(state => state.app.themeColor)
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View className="flex-1 p-3 flex flex-wrap flex-row gap-3 items-start justify-center">
-        {data?.map((item, index) => (
-          <View key={index} className="w-44 bg-white shadow-md shadow-black justify-between flex-grow dark:bg-slate-700">
-            <Pressable android_ripple={{color: "gray", foreground: true}} 
-              onPress={() => navigation.navigate("Tests", {id: item.id, title: item.title})}
-              onLongPress={() => createAlert(item.id, item.title)}
-            >
-              <Image source={item.img} className="h-40 w-full bg-white dark:bg-slate-700" resizeMode='contain'/>
-              <View className="p-2 flex-row justify-center space-x-3">
-                
-                {item.tests.every(test => test.score === 100) && <Ionicons name="md-trophy-sharp" size={24} color="#10b981" />}
-                <Text className="text-black dark:text-white text-center font-[CairoB] text-lg">{item.title}</Text>
-              </View>
-            </Pressable>
-          </View>
-        ))}
-      </View>
-    </ScrollView>
+    // <View className="p-5 flex-1 bg-slate-400">
+      <ScrollView showsVerticalScrollIndicator={false}> 
+        <View className="space-y-3 p-3 items-center justify-center ">
+          {data.map(item => (
+            <View key={item.id} style={{borderColor: color}} className="shadow-md shadow-black bg-white dark:bg-slate-700 w-full border-l-4">
+              <Pressable 
+                android_ripple={{color: "gray"}} className="p-4 flex-row space-x-5 justify-end items-center" 
+                onPress={() => navigation.navigate("Details", {id: item.id, title: item.title})}
+              >
+    
+                {item.sunan?.length > 0 && <Text className="font-[CairoB] text-lg dark:text-white">{item.sunan?.length}</Text>}
+                <Text className="font-[CairoB] text-lg dark:text-white">{item.title}</Text>
+                <View className="w-10 h-10 items-center justify-center rounded-md" style={{backgroundColor: color}}>
+                  <Text className="font-bold text-white text-lg">{item.id}</Text>
+                </View>
+              </Pressable>
+            </View>
+          ))}
+        </View>
+      </ScrollView>
+    // </View>
   )
 }
 
-export default Home;
+export default Home

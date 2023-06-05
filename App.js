@@ -1,18 +1,14 @@
 import "react-native-gesture-handler";
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import DrawerNav from './navigation/DrawerNav';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
 import * as Font from "expo-font";
 import * as NavigationBar from 'expo-navigation-bar';
-import { Provider as PaperProvider } from 'react-native-paper';
 import { useColorScheme } from "nativewind";
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from "redux-persist";
 import store from "./redux/store";
-import { Provider } from "react-redux";
-import QuizStack from "./navigation/QuizStack";
+import { Provider, useSelector } from "react-redux";
+import Container from "./screens/Container";
 
 SplashScreen.preventAutoHideAsync();
 let persistor = persistStore(store);
@@ -59,48 +55,13 @@ export default function App() {
     return null;
   }
 
-  const color = "#3e8c84" 
-
-
-  const lightTheme = {
-    dark: false,
-    colors: {
-      // primary: '#4B0082',
-      background: '#fff',
-      card: color, //header color
-      // text: '#000',
-      // border: '#4B0082',
-      // notification: '#00ccbb',
-    },
-  };
-
-  //ff7f50
-
-  const darkTheme = {
-    dark: false,
-    colors: {
-      // primary: '#4B0082',
-      background: '#1e293b',
-      card: color, //header color
-      // text: '#fff',
-      // border: '#4B0082',
-      // notification: '#4B0082',
-    },
-  };
-
   return (
     <>
-      <PaperProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-        <NavigationContainer theme={colorScheme === "dark" ? darkTheme : lightTheme}>
-          <DrawerNav/>
-          {/* <QuizStack/> */}
-        </NavigationContainer>
+          <Container/>
         </PersistGate>
       </Provider>
-      </PaperProvider>
-      <StatusBar style="light" backgroundColor={color} />
     </>
   );
 }

@@ -40,7 +40,7 @@ const CustomDrawer = (props) => {
   const handleShareLink = async () => {
     try {
       const result = await Share.share({
-        message: `أنصحك بتحميل تطبيق الصلاة عبر هذا الرابط: ${"https://play.google.com/store/apps/details?id=com.kastan.islamquiz"}`,
+        message: `أنصحك بتحميل تطبيق Front End Quiz عبر هذا الرابط: ${"https://play.google.com/store/apps/details?id=com.kastan.frontendquiz"}`,
         url: "https://play.google.com/store/apps/details?id=com.kastan.islamquiz",
       });
       if (result.action === Share.sharedAction) {
@@ -57,18 +57,7 @@ const CustomDrawer = (props) => {
     }
   };
   
-  const openFacebookMessenger = async () => {
-    const facebookUrl = 'https://www.facebook.com/messages/t/YourPageUsername'; // Replace with your Facebook page username or ID
-  
-    // Check if the Facebook app is installed
-    const isFacebookAppInstalled = await Linking.canOpenURL('fb://');
-  
-    // Open the Facebook app if it's installed, otherwise open in browser
-    const urlToOpen = isFacebookAppInstalled ? 'fb://page/YourPageUsername' : facebookUrl;
-  
-    await Linking.openURL(urlToOpen);
-  };
-  
+
 
   return (
     <View className="flex-1 bg-white dark:bg-slate-800">
@@ -90,7 +79,7 @@ const CustomDrawer = (props) => {
 
         {/* rate app */}
         <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-5 py-4" 
-          onPress={() => Linking.openURL("https://play.google.com/store/apps/details?id=com.kastan.islamquiz")}        
+          onPress={() => Linking.openURL("https://play.google.com/store/apps/details?id=com.kastan.frontendquiz")}        
         >
           <MaterialIcons name="star" size={24} color={color} />
           <Text className="mr-5 text-black font-[CairoB] dark:text-white">تقييم التطبيق</Text>
@@ -118,6 +107,14 @@ const CustomDrawer = (props) => {
         > 
           <MaterialCommunityIcons name="email" size={24} color={color} />
           <Text className="mr-5 text-black font-[CairoB] dark:text-white">تواصل معي</Text>
+        </Pressable>
+
+         {/* settings */}
+         <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-5 py-4" 
+       
+        > 
+          <MaterialIcons name="settings" size={24} color={color} />
+          <Text className="mr-5 text-black font-[CairoB] dark:text-white">الإعدادات</Text>
         </Pressable>
 
         {/* dark mode */}

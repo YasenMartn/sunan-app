@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Islam Quiz",
-    "slug": "islam-quiz-app",
+    "name": "Front End Quiz",
+    "slug": "front-end-quiz",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#3e8c84"
+      "backgroundColor": "#9763f6"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -31,11 +31,11 @@
     },
     "androidStatusBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#3e8c84"
+      "backgroundColor": "#9763f6"
     },
     "androidNavigationBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#3e8c84"
+      "backgroundColor": "#9763f6"
     }
   }
 }

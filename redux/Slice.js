@@ -1,46 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { data } from "../data";
 
 const appSlice = createSlice({
   name: "app",
   initialState: {
-    data: data,
+    themeColor: "#8b5cf6",
+    fav: [],
   },
   reducers: {
-    resetScore: (state) => {
-      state.data = data;
+    changeThemeColor: (state, action) => {
+      state.themeColor = action.payload;
     },
-    resetAllTests: (state, action) => {
-      const { id } = action.payload;
-      const item = state.data.find((item) => item.id === id);
-      if (item) {
-        item.tests.forEach((test) => {
-          test.score = 0;
-          test.taken = false;
-        });
-      }
+    addToFav: (state, action) => {
+      state.fav.push(action.payload);
     },
-    resetSingleTest: (state, action) => {
-      const { id, testId } = action.payload;
-      const item = state.data.find((item) => item.id === id);
-      if (item) {
-        const test = item.tests.find((test) => test.id === testId);
-        if (test) {
-          test.score = 0;
-          test.taken = false;
-        }
-      }
-    },
-    updateScore: (state, action) => {
-      const item = state.data.find((item) => item.id === action.payload.id);
-      const test = item.tests.find(item => item.id === action.payload.testId);
-      test.score = 0;
-      test.score += action.payload.score;
-      test.taken = true;
+    removeFromFav: (state, action) => {
+      const itemId = action.payload;
+      state.fav = state.fav.filter(item => item.id !== itemId);
     },
   },
 });
 
-export const { resetScore, updateScore, resetAllTests, resetSingleTest } = appSlice.actions;
+export const { changeThemeColor, addToFav, removeFromFav } = appSlice.actions;
+
 
 export default appSlice.reducer;
