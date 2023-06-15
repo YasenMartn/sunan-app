@@ -3,12 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 const appSlice = createSlice({
   name: "app",
   initialState: {
-    themeColor: "#8b5cf6",
+    themeColor: {
+      background: "#8b5cf6",
+      list: "bg-violet-400", // Default color for the list background
+    },
     fav: [],
   },
   reducers: {
     changeThemeColor: (state, action) => {
-      state.themeColor = action.payload;
+      const { background, list } = action.payload;
+      state.themeColor.background = background;
+      state.themeColor.list = list;
     },
     addToFav: (state, action) => {
       state.fav.push(action.payload);

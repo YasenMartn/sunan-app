@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER} from 'redux-persist';
 
 const persistConfig = {
-    key: 'themeColorSunane',
+    key: 'themeee',
     storage: AsyncStorage,
 }
 

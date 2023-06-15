@@ -70,12 +70,12 @@ const CustomDrawer = (props) => {
       <View className="border-t-[1px] border-[#525252] dark:border-white">
 
         {/* donate */}
-        <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-5 py-4"
+        {/* <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-5 py-4"
           onPress={() => Linking.openURL("https://paypal.me/Laghzaouna?country.x=MA&locale.x=en_US")}        
         >
           <MaterialCommunityIcons name="heart" size={24} color={color} />
           <Text className="mr-5 text-black  font-[CairoB] dark:text-white">دعم التطبيق</Text>
-        </Pressable>
+        </Pressable> */}
 
         {/* rate app */}
         <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-5 py-4" 

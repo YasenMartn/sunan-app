@@ -9,7 +9,7 @@ import { StatusBar } from 'expo-status-bar';
 
 const Container = () => {
 
-  const color = useSelector(state => state.app.themeColor)
+  const color = useSelector(state => state.app.themeColor.background)
 
   const { colorScheme, setColorScheme } = useColorScheme();
   //blue 3b82f6

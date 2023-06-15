@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 
 const Details = ({ route, navigation }) => {
 
-  const themeColor = useSelector(state => state.app.themeColor)
+  const themeColor = useSelector(state => state.app.themeColor.list)
 
   const { id, title } = route.params;
   const foundItem = data.find(item => item.id === id);
@@ -22,7 +22,7 @@ const Details = ({ route, navigation }) => {
   }, [navigation, title]);
 
   const { colorScheme, setColorScheme } = useColorScheme();
-  const color = colorScheme === 'light' ? '#525252' : '#fff';
+  const color = colorScheme === 'light' ? '#fff' : '#fff';
 
   const [favorites, setFavorites] = useState([]);
 
@@ -75,7 +75,7 @@ const Details = ({ route, navigation }) => {
     <ScrollView showsVerticalScrollIndicator={false}>
       <View className="space-y-3 p-3 items-center justify-center ">
         {sunan?.map(item => (
-          <View key={item.id}  style={{borderColor: themeColor}} className="shadow-md shadow-black bg-white dark:bg-slate-700 w-full border-r-4">
+          <View key={item.id} className={`shadow-md shadow-black ${themeColor} dark:bg-slate-700 w-full rounded-md`}>
             <Pressable android_ripple={{ color: 'gray' }} className="p-2 pl-0 justify-between items-center flex-row"
               onPress={() => navigation.navigate('SunahDetails', { item })}
             >
@@ -88,7 +88,8 @@ const Details = ({ route, navigation }) => {
                   />
                 )}
               />
-              <Text className="font-[CairoB] text-lg dark:text-white flex-shrink">{item.title}</Text>
+              <Text className="font-[CairoB] text-lg text-white flex-shrink">{item.ahadith?.length}</Text>
+              <Text className="font-[CairoB] text-lg text-white flex-shrink">{item.title}</Text>
             </Pressable>
           </View>
         ))}

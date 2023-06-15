@@ -20,7 +20,7 @@ const homeOptions = {
 
 const DrawerNav = () => {
 
-  const color = useSelector(state => state.app.themeColor)
+  const color = useSelector(state => state.app.themeColor.background)
 
 
   const screenOptions = () => {

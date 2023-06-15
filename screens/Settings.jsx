@@ -26,43 +26,43 @@ const Settings = () => {
 
   const themes = [
     {
-      bg: "bg-red-500",
+      list: "bg-red-400",
       color: "#ef4444",
     },
     {
-      bg: "bg-orange-500",
+      list: "bg-orange-400",
       color: "#f97316",
     },
     {
-      bg: "bg-yellow-500",
+      list: "bg-yellow-400",
       color: "#eab308",
     },
     {
-      bg: "bg-amber-500",
+      list: "bg-amber-400",
       color: "#f59e0b",
     },
     {
-      bg: "bg-green-500",
+      list: "bg-green-400",
       color: "#22c55e",
     },
     {
-      bg: "bg-emerald-500",
+      list: "bg-emerald-400",
       color: "#10b981",
     },
     {
-      bg: "bg-blue-500",
+      list: "bg-blue-400",
       color: "#3b82f6",
     },
     {
-      bg: "bg-indigo-500",
+      list: "bg-indigo-400",
       color: "#6366f1",
     },
     {
-      bg: "bg-violet-500",
+      list: "bg-violet-400",
       color: "#8b5cf6",
     },
     {
-      bg: "bg-pink-500",
+      list: "bg-pink-400",
       color: "#ec4899",
     },
     // {
@@ -87,8 +87,8 @@ const Settings = () => {
               <View className=" flex-row items-center justify-center flex-wrap w-[90%]">
                 {themes.map((item, index) => (
                   <View className="rounded-md overflow-hidden w-11 h-11 m-2" key={index}>
-                    <Pressable  className={`${item.bg} w-11 h-11 items-center justify-center `} 
-                      android_ripple={{color: "gray"}} onPress={() => dispatch(changeThemeColor(item.color)) }
+                    <Pressable className="w-11 h-11 items-center justify-center" style={{backgroundColor: item.color}}
+                      android_ripple={{color: "gray"}} onPress={() =>dispatch(changeThemeColor({ background: item.color, list: item.list })) }
                     >
                       {themeColor === item.color && <MaterialIcons name="check" size={24} color="white" />}
                     </Pressable>

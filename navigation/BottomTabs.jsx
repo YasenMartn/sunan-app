@@ -9,6 +9,7 @@ import { useColorScheme } from 'nativewind';
 import QuizStack from './QuizStack';
 import Test1 from '../screens/Test1';
 import Test2 from '../screens/Test2';
+import Notif from '../screens/Notif';
 
 const Tab = createBottomTabNavigator();
 
@@ -64,6 +65,7 @@ const BottomTabs = () => {
       <Tab.Screen name="الإعدادات" component={Settings} options={SettingsOption}/>
       <Tab.Screen name="t1" component={Test1} options={SettingsOption}/>
       <Tab.Screen name="t2" component={Test2} options={SettingsOption}/>
+      <Tab.Screen name="notif" component={Notif} options={SettingsOption}/>
     </Tab.Navigator>
   )
 }
