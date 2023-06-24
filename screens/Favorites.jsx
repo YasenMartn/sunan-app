@@ -22,6 +22,15 @@ const Favorites = () => {
     }
   };
 
+  const [isFriday, setIsFriday] = useState(false);
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const dayOfWeek = currentDate.getDay();
+
+    setIsFriday(dayOfWeek === 5);
+  }, []);
+
   return (
     <View>
       {/* {favoriteIds.map((id) => (
@@ -29,6 +38,7 @@ const Favorites = () => {
           <Text>{id}</Text>
         </View>
       ))} */}
+       {isFriday && <Text>It's Friday!</Text>}
     </View>
   );
 };

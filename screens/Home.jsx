@@ -3,7 +3,8 @@ import React from 'react'
 import { data } from '../data'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
-
+import { FontAwesome5 } from '@expo/vector-icons';
+import { useColorScheme } from 'nativewind'
 const Home = ({navigation}) => {
 
   const color = useSelector(state => state.app.themeColor.list)
@@ -33,6 +34,10 @@ const Home = ({navigation}) => {
   }, [navigation]);
 
 
+  const { colorScheme, setColorScheme } = useColorScheme();
+  const cardColor = colorScheme === "dark" ? textColor : "white"
+  const numberColor = colorScheme === "dark" ? "white" : textColor
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}> 
       <View className="space-y-3 p-3 items-center justify-center ">
@@ -45,8 +50,11 @@ const Home = ({navigation}) => {
   
               {item.sunan?.length > 0 && <Text className="font-[CairoB] text-lg text-white">{item.sunan?.length}</Text>}
               <Text className="font-[CairoB] text-lg text-white ">{item.title}</Text>
-              <View className="w-10 h-10 items-center justify-center rounded-md bg-white" >
-                <Text className={`font-bold text-lg `} style={{color: textColor}}>{item.id}</Text>
+
+           
+
+              <View className="w-10 h-10 items-center justify-center rounded-md " style={{backgroundColor: cardColor}} >
+                <Text className={`font-bold text-lg`} style={{color: numberColor}} >{item.id}</Text>
               </View>
             </Pressable>
           </View>

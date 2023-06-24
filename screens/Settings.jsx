@@ -21,7 +21,7 @@ const Settings = () => {
   const { colorScheme, setColorScheme } = useColorScheme();
   const color = colorScheme === "light" ? "#000" : "#fff"
 
-  const themeColor = useSelector(state => state.app.themeColor)
+  const themeColor = useSelector(state => state.app.themeColor.background)
   const dispatch = useDispatch();
 
   const themes = [

@@ -61,12 +61,7 @@ const SunahDetails = ({route, navigation}) => {
                     {parts?.map((item, index) => {
                       if (item.startsWith('"') && item.endsWith('"')) {
                         // Render the text between quotes in red, including the quotes
-                        return(
-                          <>
-                            <Text style={{color: themeColor}} key={index}>{item}</Text>
-                            <IconButton icon="content-copy" iconColor={color} onPress={() => handleCopy2(item)}/>
-                        </>
-                        )
+                        return <Text key={index} style={{color: themeColor}}>{item}</Text>
                         ;
                       } else {return item}
                     })}
