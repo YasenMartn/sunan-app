@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#3b82f6"
+      "backgroundColor": "#6366f1"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -31,11 +31,11 @@
     },
     "androidStatusBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#3b82f6"
+      "backgroundColor": "#6366f1"
     },
     "androidNavigationBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#3b82f6"
+      "backgroundColor": "#6366f1"
     }
   }
 }

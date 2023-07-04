@@ -40,8 +40,8 @@ const CustomDrawer = (props) => {
   const handleShareLink = async () => {
     try {
       const result = await Share.share({
-        message: `أنصحك بتحميل تطبيق Front End Quiz عبر هذا الرابط: ${"https://play.google.com/store/apps/details?id=com.kastan.frontendquiz"}`,
-        url: "https://play.google.com/store/apps/details?id=com.kastan.islamquiz",
+        message: `أنصحك بتحميل تطبيق Sunan عبر هذا الرابط: ${"https://play.google.com/store/apps/details?id=com.kastan.sunan"}`,
+        url: "https://play.google.com/store/apps/details?id=com.kastan.sunan",
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -79,7 +79,7 @@ const CustomDrawer = (props) => {
 
         {/* rate app */}
         <Pressable android_ripple={{color: "gray"}} className="flex-row-reverse items-center p-5 py-4" 
-          onPress={() => Linking.openURL("https://play.google.com/store/apps/details?id=com.kastan.frontendquiz")}        
+          onPress={() => Linking.openURL("https://play.google.com/store/apps/details?id=com.kastan.sunan")}        
         >
           <MaterialIcons name="star" size={24} color={color} />
           <Text className="mr-5 text-black font-[CairoB] dark:text-white">تقييم التطبيق</Text>

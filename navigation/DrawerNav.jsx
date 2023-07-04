@@ -56,9 +56,7 @@ const DrawerNav = () => {
   
   return (
     <Drawer.Navigator screenOptions={screenOptions} drawerContent={(props) => <CustomDrawer {...props} />}>
-      <Drawer.Screen name="e" component={BottomTabs} options={homeOptions}/>
-      <Drawer.Screen name="الصفحة الرئيسية" component={QuizStack} options={homeOptions}/>
-      <Drawer.Screen name="settings" component={Settings} options={homeOptions}/>
+      <Drawer.Screen name="الصفحة الرئيسية" component={BottomTabs} options={homeOptions}/>
     </Drawer.Navigator>
   )
 }

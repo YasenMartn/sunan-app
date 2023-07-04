@@ -29,7 +29,7 @@ const Home = ({navigation}) => {
 
   useEffect(() => {
     navigation.setOptions({
-      title: "Sunan " + totalObjects,
+      title: totalObjects + " سنة" ,
     });
   }, [navigation]);
 

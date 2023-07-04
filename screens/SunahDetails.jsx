@@ -55,7 +55,7 @@ const SunahDetails = ({route, navigation}) => {
           const parts = item.title.split(/(".*?")/);
           return (
             <View key={item.id} className="space-y-3">
-              <View className="bg-slate-200 dark:bg-slate-700 w-full">
+              <View className="bg-white shadow-md shadow-black dark:bg-slate-700 w-full">
                 <View className="p-3">
                   <Text key={item.id} className=" text-xl font-bold dark:text-white pt-1 leading-8">
                     {parts?.map((item, index) => {
