@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 const SunahDetails = ({route, navigation}) => {
 
   const {item} = route.params;
-  const {title, desc, ahadith} = item;
+  const {title, desc, ahadith, def} = item;
 
   useEffect(() => {
     const shortenedTitle = title.slice(0, 30);
@@ -49,6 +49,10 @@ const SunahDetails = ({route, navigation}) => {
       <View className="p-3 space-y-3">
         {title && <Text className="font-[CairoB] text-lg dark:text-white text-center">{title}</Text>}
         {desc && <Text className="font-[CairoB] text-lg dark:text-white">{desc}</Text>}
+
+        {def && <Text className="font-[CairoB] text-lg" style={{color: themeColor}}>ما هي ؟</Text>}
+        {def && <Text className="font-[CairoB] text-lg dark:text-white">{def}</Text>}
+
         <Text className="font-[CairoB] text-lg" style={{color: themeColor}}>الأحاديث التي تدل على ذلك:</Text>
 
         {ahadith?.map(item => {
@@ -76,14 +80,14 @@ const SunahDetails = ({route, navigation}) => {
                     <IconButton icon="content-copy" iconColor={color} onPress={() => handleCopy(item.title)}/>
                   </View>
                 </View>
-                <View className="p-3">
+                {item.words && <View className="p-3">
                   <Text className="font-[CairoB] text-lg" style={{color: themeColor}}>شرح المفردات:</Text>
                   {item.words?.map((item, index) => (
                     <View key={index}>
                       <Text className="font-bold text-lg">{item}</Text>
                     </View>
                   ))}
-                </View>
+                </View>}
               </View>
 
              {item.expl && <View>
