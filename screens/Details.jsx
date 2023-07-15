@@ -2,7 +2,7 @@ import { View, Text, Pressable, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { data } from '../data';
 import { MaterialIcons } from '@expo/vector-icons';
-import { IconButton } from 'react-native-paper';
+import { IconButton, TextInput } from 'react-native-paper';
 import { useColorScheme } from 'nativewind';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector } from 'react-redux';
@@ -71,11 +71,27 @@ const Details = ({ route, navigation }) => {
     saveFavorites();
   }, [favorites]);
 
+  //searchbar
+  const [searchText, setSearchText] = useState('');
+  const filteredItems = sunan.filter(item =>
+    item.title.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
+
+      {/* <View className="p-2">
+        <TextInput 
+          mode='outlined' 
+          placeholder='search'  
+          onChangeText={text => setSearchText(text)}
+          value={searchText}
+        />
+      </View> */}
+
       <View className="space-y-3 p-3 items-center justify-center ">
-        {sunan?.map(item => (
-          <View key={item.id} className={`shadow-md shadow-black ${themeColor} dark:bg-slate-700 w-full rounded-md`}>
+        {filteredItems?.map(item => (
+          <View key={item.id} className={`shadow-md shadow-black ${item.color ? item.color : themeColor} dark:bg-slate-700 w-full rounded-md`}>
             <Pressable android_ripple={{ color: 'gray' }} className="p-2 pl-0 justify-between items-center flex-row"
               onPress={() => navigation.navigate('SunahDetails', { item })}
             >

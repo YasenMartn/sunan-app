@@ -83,7 +83,7 @@ const Settings = () => {
         >
           <Pressable className="flex-1 justify-center items-center bg-[#00000080]" activeOpacity={1} onPress={() => setModalVisible(false)}>
             <View className="bg-white dark:bg-slate-700 p-5">
-              <Text className="text-lg font-bold dark:text-white">Theme Color</Text>
+              <Text className="text-lg dark:text-white font-[CairoB]">لون النمط</Text>
               <View className=" flex-row items-center justify-center flex-wrap w-[90%]">
                 {themes.map((item, index) => (
                   <View className="rounded-md overflow-hidden w-11 h-11 m-2" key={index}>
@@ -129,12 +129,12 @@ const Settings = () => {
       </Modal> */}
 
       {/* change theme */}
-      <Pressable className="p-5 flex-row items-center space-x-5" android_ripple={{color: "gray"}} onPress={() => setModalVisible(true)}>
-        <MaterialCommunityIcons name="palette-swatch" size={24} color={color} />
+      <Pressable className="p-5 flex-row items-center space-x-5 justify-end" android_ripple={{color: "gray"}} onPress={() => setModalVisible(true)}>
         <View>
-          <Text className="text-black dark:text-white">Theme</Text>
-          <Text className="text-slate-500 dark:text-slate-400">Change the app color theme.</Text>
+          <Text className="text-black dark:text-white font-[CairoB] text-lg">النمط</Text>
+          <Text className="text-slate-500 dark:text-slate-400 font-[CairoB]">تغيير نمط ألوان التطبيق</Text>
         </View>
+        <MaterialCommunityIcons name="palette-swatch" size={24} color={color} />
       </Pressable>
 
 
@@ -143,4 +143,3 @@ const Settings = () => {
 }
 
 export default Settings
-

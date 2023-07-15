@@ -41,20 +41,16 @@ const Home = ({navigation}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}> 
       <View className="space-y-3 p-3 items-center justify-center ">
-        {data.map(item => (
+        {data.map((item, index) => (
           <View key={item.id} className={`shadow-md ${color} shadow-black dark:bg-slate-700 w-full rounded-md`}>
             <Pressable 
               android_ripple={{color: "gray"}} className="p-4 flex-row space-x-5 justify-end items-center" 
               onPress={() => navigation.navigate("Details", {id: item.id, title: item.title})}
             >
-  
               {item.sunan?.length > 0 && <Text className="font-[CairoB] text-lg text-white">{item.sunan?.length}</Text>}
-              <Text className="font-[CairoB] text-lg text-white ">{item.title}</Text>
-
-           
-
+              <Text className="font-[CairoB] text-lg text-white flex-shrink">{item.title}</Text>
               <View className="w-10 h-10 items-center justify-center rounded-md " style={{backgroundColor: cardColor}} >
-                <Text className={`font-bold text-lg`} style={{color: numberColor}} >{item.id}</Text>
+                <Text className={`font-bold text-lg`} style={{color: numberColor}} >{index + 1}</Text>
               </View>
             </Pressable>
           </View>
